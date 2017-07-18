@@ -1,0 +1,3 @@
+= Java 9 Module System
+
+This application simply exemplifies working Module System on Java 9.
