@@ -1,7 +1,6 @@
 package com.kodcu;
 
 import com.kodcu.user.User;
-
 import java.util.logging.Logger;
 
 /**

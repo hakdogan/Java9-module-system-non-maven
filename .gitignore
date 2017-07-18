@@ -3,3 +3,4 @@
 out/
 *.war
 *.jar
+.DS_Store
