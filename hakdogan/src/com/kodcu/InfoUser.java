@@ -1,6 +1,9 @@
 package com.kodcu;
 
+import com.kodcu.db.ConnDB;
 import com.kodcu.user.User;
+
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 /**
@@ -8,10 +11,17 @@ import java.util.logging.Logger;
  */
 public class InfoUser {
 
-    private static final Logger loger = Logger.getLogger("InfoUser");
+    private static final Logger logger = Logger.getLogger("InfoUser");
     public static void main(String args[]){
 
         User user = new User("Huseyin", "Akdogan", "Expert Software Consultant", 41);
-        loger.info(user.toString());
+        logger.info(user.toString());
+        try {
+            ConnDB.instance().insertWithStatement(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        logger.info("SQL");
+
     }
 }

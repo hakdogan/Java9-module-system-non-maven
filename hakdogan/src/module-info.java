@@ -4,5 +4,7 @@
 module hakdogan {
 
     requires java.logging;
+    requires java.sql;
     requires User;
+    requires Database;
 }

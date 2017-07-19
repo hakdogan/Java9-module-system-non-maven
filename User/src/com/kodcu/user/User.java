@@ -7,15 +7,15 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String rofession;
+    private String profession;
     private int age;
 
     public User(){}
 
-    public User(String firstName, String lastName, String rofession, int age) {
+    public User(String firstName, String lastName, String profession, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.rofession = rofession;
+        this.profession = profession;
         this.age = age;
     }
 
@@ -35,12 +35,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getRofession() {
-        return rofession;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setRofession(String rofession) {
-        this.rofession = rofession;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     public int getAge() {
@@ -56,7 +56,7 @@ public class User {
         return "User{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", rofession='" + rofession + '\'' +
+                ", rofession='" + profession + '\'' +
                 ", age=" + age +
                 '}';
     }
