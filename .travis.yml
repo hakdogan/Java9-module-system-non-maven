@@ -1,7 +1,8 @@
 language: java
+dist: precise
 jdk:
 - oraclejdk9
-script: mvn install
+
 deploy:
   provider: releases
   skip_cleanup: true
