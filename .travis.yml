@@ -1,0 +1,13 @@
+language: java
+jdk:
+- oraclejdk9
+script: mvn install
+deploy:
+  provider: releases
+  skip_cleanup: true
+
+  on:
+    tags: true
+    all_branches: true
+    repo: hakdogan/Java9
+

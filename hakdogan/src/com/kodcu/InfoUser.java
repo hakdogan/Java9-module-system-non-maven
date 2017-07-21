@@ -19,9 +19,8 @@ public class InfoUser {
         try {
             ConnDB.instance().insertWithStatement(user);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
-        logger.info("SQL");
 
     }
 }

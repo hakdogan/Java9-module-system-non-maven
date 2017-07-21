@@ -1,3 +1,5 @@
 = Java 9 Module System
 
+image:https://travis-ci.org/hakdogan/Java9.svg?branch=master["Build Status", link="https://travis-ci.org/hakdogan/Java9"]
+
 This application simply exemplifies working Module System on Java 9 and it uses h2 database as an example of adding an external library.

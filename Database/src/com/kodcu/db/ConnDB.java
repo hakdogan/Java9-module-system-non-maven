@@ -32,6 +32,10 @@ public class ConnDB {
         return instance;
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection getDBConnection() {
 
         if(Objects.isNull(CONNECTION)){
@@ -53,26 +57,34 @@ public class ConnDB {
         return CONNECTION;
     }
 
+    /**
+     *
+     * @param user
+     * @throws SQLException
+     */
     public void insertWithStatement(User user) throws SQLException {
 
-        DeleteDbFiles.execute("~", DB_NAME, true);
+        //DeleteDbFiles.execute("~", DB_NAME, true);
         Connection connection = getDBConnection();
         Statement stmt;
+
         try {
+
             connection.setAutoCommit(false);
             stmt = connection.createStatement();
-            stmt.execute("CREATE TABLE PERSON(id int primary key, firstname varchar(255), lastname varchar(255), " +
-                    "profession varchar(255), age int)");
-            stmt.execute("INSERT INTO PERSON(id, firstname, lastname, profession, age) VALUES(1, '"
+            createTable(stmt);
+            stmt.execute("INSERT INTO PERSON(id, firstname, lastname, profession, age) VALUES(null, '"
                     + user.getFirstName() + "', '" + user.getLastName() + "', '" + user.getProfession() + "', " + user.getAge() + ")");
 
             ResultSet rs = stmt.executeQuery("select * from PERSON");
             logger.info("H2 Database inserted through Statement");
+
             while (rs.next()) {
                 logger.info("Id: " + rs.getInt("id") + " First Name: " + rs.getString("firstname")
                 + " Last Name: " + rs.getString("lastname") + " Profession: " + rs.getString("profession")
                 + " Age: " + rs.getInt("age"));
             }
+
             stmt.close();
             connection.commit();
         } catch (SQLException e) {
@@ -81,6 +93,20 @@ public class ConnDB {
             logger.info(e.getMessage());
         } finally {
             connection.close();
+        }
+    }
+
+    /**
+     *
+     * @param stmt
+     */
+    private void createTable(Statement stmt){
+
+        try {
+            stmt.execute("CREATE TABLE IF NOT EXISTS PERSON(id int not null auto_increment primary key, firstname varchar(255), lastname varchar(255), " +
+                    "profession varchar(255), age int)");
+        } catch (SQLException e) {
+            logger.info(e.getMessage());
         }
     }
 
