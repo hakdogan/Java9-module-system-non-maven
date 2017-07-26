@@ -1,13 +1,8 @@
 language: java
 sudo: required
+dist: trusty
 group: edge
-jdk:
- - oraclejdk8
- - oraclejdk9
-
-matrix:
-  allow_failures:
-    - jdk: oraclejdk9
+jdk: oraclejdk9
 
 deploy:
   provider: releases
@@ -17,4 +12,3 @@ deploy:
     tags: true
     all_branches: true
     repo: hakdogan/Java9
-
