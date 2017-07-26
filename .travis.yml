@@ -1,14 +1,7 @@
-language: java
-sudo: required
-dist: trusty
-group: edge
-jdk: oraclejdk9
-
-deploy:
-  provider: releases
-  skip_cleanup: true
-
-  on:
-    tags: true
-    all_branches: true
-    repo: hakdogan/Java9
+"sudo": "required",
+"dist": "trusty",
+"group": "edge",
+"jdk": "oraclejdk9",
+"language": "java",
+"script": "./inspect",
+"os": "linux"
