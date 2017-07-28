@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.logging.Logger;
 import com.kodcu.user.User;
-import org.h2.tools.DeleteDbFiles;
 
 public class ConnDB {
 
