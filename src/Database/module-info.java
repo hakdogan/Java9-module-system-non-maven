@@ -1,6 +1,7 @@
 module Database {
+    requires log4j.core;
+    requires log4j.api;
     requires java.sql;
-    requires java.logging;
     requires User;
     exports com.kodcu.db;
 }

@@ -2,7 +2,7 @@
 
 image:https://travis-ci.org/hakdogan/Java9.svg?branch=master["Build Status", link="https://travis-ci.org/hakdogan/Java9"]
 
-This application simply exemplifies working Module System on Java 9 and it uses h2 database as an example of adding an external library.
+This application simply exemplifies working Module System on Java 9 and it uses some libraries such as ``h2 database`` and ``log4j`` as an example of adding the external library.
 
 == How do I compile?
 
@@ -10,7 +10,14 @@ You should use the ``javac`` command with the following parameters in the root d
 
 [source,]
 ----
-javac -d mods --module-source-path src src/Database/module-info.java src/Database/src/com/kodcu/db/ConnDB.java src/hakdogan/module-info.java src/hakdogan/src/com/kodcu/InfoUser.java src/User/module-info.java src/User/src/com/kodcu/user/User.java
+javac --module-path mods:lib \
+-d mods --module-source-path src \
+src/Database/module-info.java \
+src/Database/src/com/kodcu/db/ConnDB.java \
+src/hakdogan/module-info.java \
+src/hakdogan/src/com/kodcu/InfoUser.java \
+src/User/module-info.java \
+src/User/src/com/kodcu/user/User.java
 ----
 
 == How do I run?
@@ -18,5 +25,15 @@ javac -d mods --module-source-path src src/Database/module-info.java src/Databas
 You should use the ``java`` command with the following parameters in the root directory of the project to run this code.
 [source,]
 ----
-java -Dfile.encoding=UTF-8 -classpath mods/hakdogan:mods/Database:mods/User:lib/h2-1.4.196.jar com.kodcu.InfoUser
+java -Dfile.encoding=UTF-8 \
+-Dlog4j.configurationFile=src/hakdogan/src/log4j2.properties \
+-classpath mods/hakdogan\
+:mods/Database\
+:mods/User\
+:lib/h2-1.4.196.jar\
+:lib/log4j-core-2.8.2.jar\
+:lib/log4j-api-2.8.2.jar \
+com.kodcu.InfoUser
 ----
+
+image::images/readme.gif[]

@@ -1,5 +1,7 @@
 .idea/
 *.iml
+log/
+mods/
 out/
 *.war
 *.jar
