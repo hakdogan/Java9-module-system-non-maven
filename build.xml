@@ -1,0 +1,10 @@
+<project>
+    <target name="clean">
+        <delete dir="mods"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="mods"/>
+        <javac modulesourcepath="src/*" destdir="mods" includeantruntime="false" modulepath="src"/>
+    </target>
+</project>
