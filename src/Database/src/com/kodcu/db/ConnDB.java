@@ -2,8 +2,10 @@ package com.kodcu.db;
 
 import java.sql.*;
 import java.util.Objects;
-import java.util.logging.Logger;
 import com.kodcu.user.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.h2.tools.DeleteDbFiles;
 
 public class ConnDB {
 
@@ -17,7 +19,7 @@ public class ConnDB {
     private static Object lock = new Object();
     private static Connection CONNECTION;
 
-    private static final Logger logger  = Logger.getLogger("ConnectionDB");
+    private static final Logger logger  = LogManager.getLogger(ConnDB.class);
 
     public static ConnDB instance(){
 
@@ -28,6 +30,7 @@ public class ConnDB {
             }
         }
 
+        logger.info("ConnDB instance being returned.");
         return instance;
     }
 
@@ -42,13 +45,13 @@ public class ConnDB {
             try {
                 Class.forName(DB_DRIVER);
             } catch (ClassNotFoundException e) {
-                logger.info(e.getMessage());
+                logger.error(e.getMessage());
             }
 
             try {
                 return DriverManager.getConnection(DB_CONNECTION_STRING, DB_USER, DB_PASSWORD);
             } catch (SQLException e) {
-                logger.info(e.getMessage());
+                logger.error(e.getMessage());
 
             }
         }
@@ -63,7 +66,7 @@ public class ConnDB {
      */
     public void insertWithStatement(User user) throws SQLException {
 
-        //DeleteDbFiles.execute("~", DB_NAME, true);
+        DeleteDbFiles.execute("~", DB_NAME, true);
         Connection connection = getDBConnection();
         Statement stmt;
 
@@ -87,9 +90,9 @@ public class ConnDB {
             stmt.close();
             connection.commit();
         } catch (SQLException e) {
-            logger.info(e.getMessage());
+            logger.error(e.getMessage());
         } catch (Exception e) {
-            logger.info(e.getMessage());
+            logger.error(e.getMessage());
         } finally {
             connection.close();
         }
@@ -105,7 +108,7 @@ public class ConnDB {
             stmt.execute("CREATE TABLE IF NOT EXISTS PERSON(id int not null auto_increment primary key, firstname varchar(255), lastname varchar(255), " +
                     "profession varchar(255), age int)");
         } catch (SQLException e) {
-            logger.info(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
