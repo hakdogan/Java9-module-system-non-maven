@@ -1,3 +1,10 @@
 language: java
 jdk: oraclejdk9
 os: linux
+
+before_install:
+    - set -eo pipefail
+    - wget http://www-us.apache.org/dist//ant/binaries/apache-ant-1.10.1-bin.tar.gz;
+    - tar -xzf apache-ant-1.10.1-bin.tar.gz;
+    - PATH=apache-ant-1.10.1/bin:$PATH;
+script: ant test
