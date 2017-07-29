@@ -10,6 +10,10 @@
         </fileset>
     </path>
 
+    <classpath>
+        <pathelement path="${build-classpath}"/>
+    </classpath>
+
     <target name="clean">
         <echo>Cleaning ${build.dir} files ...</echo>
         <delete dir="${build.dir}" />
@@ -20,10 +24,7 @@
     </target>
 
     <target name="compile" depends="clean, makedir">
-        <echo>Compailing with jars of ${libs.dir} directory...</echo>
-        <javac modulesourcepath="${src.dir}/*" destdir="${build.dir}" includeantruntime="false" modulepath="${build.dir}">
-            <classpath refid="build-classpath" />
-        </javac>
+        <javac modulesourcepath="${src.dir}/*" destdir="${build.dir}" includeantruntime="false" modulepath="${build.dir}" classpathref="build-classpath"/>
     </target>
 
     <target name="test" depends="compile">
