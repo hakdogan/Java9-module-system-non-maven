@@ -7,4 +7,8 @@
         <mkdir dir="mods"/>
         <javac modulesourcepath="src/*" destdir="mods" includeantruntime="false" modulepath="src"/>
     </target>
+
+    <target name="test" depends="compile">
+        <echo message="Testing..." />
+    </target>
 </project>
