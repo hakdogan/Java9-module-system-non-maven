@@ -4,16 +4,6 @@
     <property name="libs.dir" location="lib" />
     <property name="build.dir" location="mods" />
 
-    <path id="build-classpath">
-        <fileset dir="${libs.dir}">
-            <include name="*.jar" />
-        </fileset>
-    </path>
-
-    <classpath>
-        <pathelement path="${build-classpath}"/>
-    </classpath>
-
     <target name="clean">
         <echo>Cleaning ${build.dir} files ...</echo>
         <delete dir="${build.dir}" />
@@ -24,7 +14,7 @@
     </target>
 
     <target name="compile" depends="clean, makedir">
-        <javac modulesourcepath="${src.dir}/*" destdir="${build.dir}" includeantruntime="false" modulepath="${build.dir}" classpathref="build-classpath"/>
+        <javac modulesourcepath="${src.dir}/*" destdir="${build.dir}" includeantruntime="false" modulepath="${build.dir}:${libs.dir}"/>
     </target>
 
     <target name="test" depends="compile">
