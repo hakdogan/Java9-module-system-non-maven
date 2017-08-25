@@ -1,6 +1,6 @@
-= Java 9 Module System
+= Example of Java 9 module system non-maven
 
-image:https://travis-ci.org/hakdogan/Java9.svg?branch=master["Build Status", link="https://travis-ci.org/hakdogan/Java9"]
+image:https://travis-ci.org/hakdogan/Java9-module-system-non-maven.svg?branch=master["Build Status", link="https://travis-ci.org/hakdogan/Java9-module-system-non-maven"]
 
 This application simply exemplifies working Module System on Java 9 and it uses some libraries such as ``h2 database`` and ``log4j`` as an example of adding the external library.
 
