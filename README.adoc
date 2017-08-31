@@ -20,6 +20,15 @@ src/User/module-info.java \
 src/User/src/com/kodcu/user/User.java
 ----
 
+With ``find``, this command can be written shorter.
+
+[source,]
+----
+javac --module-path mods:lib \
+-d mods --module-source-path \
+src $(find . -name "*.java")
+----
+
 == How do I run?
 
 You should use the ``java`` command with the following parameters in the root directory of the project to run this code.
